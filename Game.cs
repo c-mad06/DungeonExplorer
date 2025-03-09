@@ -12,6 +12,9 @@ namespace DungeonExplorer
         {
             // Initialize the game with one room and one player
             Room.Room("the room is a dark and damp with cold stone bricks crating the floor, walls and ceiling with nothing but a singular torch for light, as there are no windows the room is bare apart from three exits one to the north ,one east and the other west.");
+            Console.WriteLine("please input your name, ");
+            string playerName = Console.ReadLine();
+            
         }
         public void Start()
         {
