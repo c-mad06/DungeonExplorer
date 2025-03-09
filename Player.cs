@@ -19,7 +19,7 @@ namespace DungeonExplorer
         }
         public string InventoryContents()
         {
-            return string.Join(", ", inventory);
+            return string.Join("The items you have are , ", inventory);
         }
     }
 }
