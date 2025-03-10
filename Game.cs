@@ -29,14 +29,31 @@ namespace DungeonExplorer
                 bool roomOne = true;
                 while (roomOne)
                 {
-                    Console.WriteLine("you awake to find yourself in a strange room, what would you like to do, " +
-                                      "please type the number of the action you would like to preform " +
-                                      "1: move north, 2: move east, 3: move south, 4: move west, 5: look around the room " +
-                                      "6: view health, 7: pick up item, 8: view inventory,  ");
-                    int action = Console.ReadLine();
-                    if (ation == 1)
+                    bool validNumber = false;
+                    while(!validNumber)
+                    {
+                        Console.WriteLine("you awake to find yourself in a strange room, what would you like to do, " +
+                                          "please type the number of the action you would like to preform " +
+                                          "1: move north, 2: move east, 3: move south, 4: move west, 5: look around the room " +
+                                          "6: view health, 7: pick up item, 8: view inventory,  ");
+                        string action = Console.ReadLine();
+                        int number;
+                        validNumber = int.TryParse(action, out number);
+                        if (validNumber)
+                        {
+                            chosenAction = number;
+                        }
+                        else
+                        {
+                            Console.WriteLine("please enter a valid input:  ");
+                        }
+                        
+                    }
+                    if (action == 1)
                     {
                         
+                    }
+                }
             }
         }
     }
