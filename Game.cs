@@ -11,13 +11,13 @@ namespace DungeonExplorer
         public Game()
         {
             // Initialize the game with one room and one player
-            Room.Room("the room is a dark and damp with cold stone bricks crating the floor, " +
+            currentRoom = new Room("the room is a dark and damp with cold stone bricks crating the floor, " +
                       "walls and ceiling with nothing but a singular torch for light, " +
                       "as there are no windows the room is bare apart from three exits one to the north " +
                       ",one east and the other west and a rusted dagger on the floor.");
             Console.WriteLine("please input your name, ");
             string playerName = Console.ReadLine();
-            Player.Player(playerName, 100);
+            player = new Player(playerName, 100);
         }
         public void Start()
         {
@@ -29,30 +29,45 @@ namespace DungeonExplorer
                 bool roomOne = true;
                 while (roomOne)
                 {
-                    bool validNumber = false;
-                    while(!validNumber)
+                    bool validAction = false;
+                    string action = ("");
+                    while (!validAction)
                     {
                         Console.WriteLine("you awake to find yourself in a strange room, what would you like to do, " +
-                                          "please type the number of the action you would like to preform " +
-                                          "1: move north, 2: move east, 3: move south, 4: move west, 5: look around the room " +
-                                          "6: view health, 7: pick up item, 8: view inventory,  ");
-                        string action = Console.ReadLine();
-                        int number;
-                        validNumber = int.TryParse(action, out number);
-                        if (validNumber)
+                            "please type the action you would like to preform " +
+                            "north: move north, east: move east, south: move south, west: move west, look: look around the room, " +
+                            "health: view health, pick: pick up item, inventory: view inventory,  ");
+                        action = Console.ReadLine();
+                        if (action == ("north") || action == ("east") || action == ("south") || action == ("west") || action == ("look") || action == ("health") || action == ("pick") || action == ("inventory"))
                         {
-                            chosenAction = number;
+                            validAction = true;
                         }
                         else
                         {
-                            Console.WriteLine("please enter a valid input:  ");
+                            Console.WriteLine("please input a valid option ");
                         }
-                        
                     }
-                    if (action == 1)
+                    if (action == ("north"))
                     {
-                        
+                        Console.WriteLine("you move through the norht door");
+                        roomOne = false;
                     }
+                    else if (action == ("east"))
+                    {
+                        Console.WriteLine("you move through the east door");
+                        roomOne = false;
+                    }
+                    else if (action == ("south"))
+                    {
+                        Console.WriteLine("there is no south door to use please select a different option");
+                    }
+                    else if (action == ("west"))
+                    {
+                        Console.WriteLine("you move through the west door");
+                        roomOne = false;
+                    }
+
+
                 }
             }
         }
