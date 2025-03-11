@@ -13,6 +13,10 @@ namespace DungeonExplorer
             Name = name;
             Health = health;
         }
+        public int GetHealth()
+        {
+            return Health;
+        }
         public void PickUpItem(string item)
         {
             inventory.Add(item);

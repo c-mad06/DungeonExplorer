@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Media;
 
 namespace DungeonExplorer
@@ -26,17 +27,20 @@ namespace DungeonExplorer
             while (playing)
             {
                 // Code your playing logic here
+                string action = ("");
                 bool roomOne = true;
+                string item = ("rusty dagger");
+                bool itemCollected = false;
+                Console.WriteLine("you awake to find yourself in a strange room, what would you like to do, " +
+    "please type the action you would like to preform " +
+    "north: move north, east: move east, south: move south, west: move west, look: look around the room, " +
+    "health: view health, pick: pick up item, inventory: view inventory,  ");
                 while (roomOne)
                 {
                     bool validAction = false;
-                    string action = ("");
+
                     while (!validAction)
                     {
-                        Console.WriteLine("you awake to find yourself in a strange room, what would you like to do, " +
-                            "please type the action you would like to preform " +
-                            "north: move north, east: move east, south: move south, west: move west, look: look around the room, " +
-                            "health: view health, pick: pick up item, inventory: view inventory,  ");
                         action = Console.ReadLine();
                         if (action == ("north") || action == ("east") || action == ("south") || action == ("west") || action == ("look") || action == ("health") || action == ("pick") || action == ("inventory"))
                         {
@@ -49,13 +53,15 @@ namespace DungeonExplorer
                     }
                     if (action == ("north"))
                     {
-                        Console.WriteLine("you move through the norht door");
+                        Console.WriteLine("you move through the north door");
                         roomOne = false;
+                        playing = false;
                     }
                     else if (action == ("east"))
                     {
                         Console.WriteLine("you move through the east door");
                         roomOne = false;
+                        playing = false;
                     }
                     else if (action == ("south"))
                     {
@@ -65,9 +71,36 @@ namespace DungeonExplorer
                     {
                         Console.WriteLine("you move through the west door");
                         roomOne = false;
+                        playing = false;
                     }
-
-
+                    else if (action == ("look"))
+                    {
+                        string description = currentRoom.GetDescription();
+                        Console.WriteLine(description);
+                    }
+                    else if (action == ("health"))
+                    {
+                        int health = player.GetHealth();
+                        Console.WriteLine("your health is :", health);
+                    }
+                    else if (action == ("pick"))
+                    {
+                        if (!itemCollected)
+                        {
+                            player.PickUpItem(item);
+                            itemCollected = true;
+                            Console.WriteLine("you picked up the rusty dagger");
+                        }
+                        else
+                        {
+                            Console.WriteLine("you have already collected the item in this room");
+                        }
+                    }
+                    else if (action == ("inventory"))
+                    {
+                        string inventory = player.InventoryContents();
+                        Console.WriteLine(inventory);
+                    }
                 }
             }
         }
