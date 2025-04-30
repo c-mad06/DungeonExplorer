@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
+    //iherits from creature class with name and regular unarmed damage set
     public class Player : creature
     {
         private string name;
@@ -15,6 +16,7 @@ namespace DungeonExplorer
         {
             return handDamage;
         }
+        // sets extra health and overides inheritance to include extra health in method call
         int extraHealth = 50;
         public override int GetHealth()
         {
