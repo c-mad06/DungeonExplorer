@@ -3,32 +3,24 @@ using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
-    public class Player
+    //iherits from creature class with name and regular unarmed damage set
+    public class Player : creature
     {
-        public string Name { get; private set; }
-        public int Health { get; private set; }
-        private List<string> inventory = new List<string>();
+        private string name;
 
-        public Player(string name, int health) 
-        {
-            Name = name;
-            Health = health;
-        }
-        public int GetHealth()
-        {
-            return Health;
-        }
+        public string Name { get => name; private set => name = value; }
 
-        // adds item to players inventory
-        public void PickUpItem(string item)
-        {
-            inventory.Add(item);
-        }
 
-        // returns whats in players inventory
-        public string InventoryContents()
+        int handDamage = 15;
+        public int GetHandDamage()
         {
-            return string.Join("The items you have are , ", inventory);
+            return handDamage;
+        }
+        // sets extra health and overides inheritance to include extra health in method call
+        int extraHealth = 50;
+        public override int GetHealth()
+        {
+            return extraHealth + health;
         }
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonExplorer", "DungeonExplorer.csproj", "{FE35A2D4-F16B-43F2-A317-D033ABD5B6B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dugeon explorer test", "..\dugeon explorer test\dugeon explorer test.csproj", "{8D987BAC-E516-4DF6-9A8B-94FE53537D2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FE35A2D4-F16B-43F2-A317-D033ABD5B6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE35A2D4-F16B-43F2-A317-D033ABD5B6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE35A2D4-F16B-43F2-A317-D033ABD5B6B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D987BAC-E516-4DF6-9A8B-94FE53537D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D987BAC-E516-4DF6-9A8B-94FE53537D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D987BAC-E516-4DF6-9A8B-94FE53537D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D987BAC-E516-4DF6-9A8B-94FE53537D2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
