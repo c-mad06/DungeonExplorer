@@ -14,7 +14,7 @@ namespace DungeonExplorer
 
         public Game()
         {
-            // Initialize the game with one room and one player adding room description and player name with health
+            // Initialize the game with two rooms and one player adding room descriptions and player name
             currentRoom = new Room("the room is a dark and damp with cold stone bricks creating the floor, " +
                       "walls and ceiling with nothing but a singular torch for light, " +
                       "as there are no windows the room is bare apart from one exit to the north " +
@@ -30,6 +30,7 @@ namespace DungeonExplorer
         public void Start()
         {
             // gives object reference for method calls
+            // and declares variables for later use
             var Inventory = new Inventory();
             bool playing = true;
             var player = new Player();
@@ -53,6 +54,7 @@ namespace DungeonExplorer
             bool monsterFlea = false;
             bool potionUsed = false;
 
+            // outputs beginig statement for game
             Console.WriteLine("you awake to find yourself in a strange room, what would you like to do, " +
     "please type the action you would like to preform ");
             while (playing)
@@ -138,18 +140,21 @@ namespace DungeonExplorer
 
 
                 // room 2
+                // checks if the player has weapon and tells user a fight begins
                 bool hasWeapon = Inventory.IsWeapon();
                 Console.WriteLine("you enter the new room and find a monster prepare to fight, " +
     "please type the action you would like to preform");
 
-
+                // loops while moster health is above 0 and also loops to ensure a valid action is used
                 while (monsterHealth > 0)
                 {
                     validFightAction = false;
                     while (!validFightAction)
                     {
+                        // gives the user the attack or dodge action
                         Console.WriteLine("attack, dodge");
                         string fightAction = Console.ReadLine();
+                        // checks if monster is dodging and checks if the player has a weapon and changes damage and out put message as required
                         if (fightAction == "attack")
                         {
                             if (!Mdodging)
@@ -167,6 +172,7 @@ namespace DungeonExplorer
                                     monsterHealth = monsterHealth - damageDone;
                                 }
                             }
+                            // tells user the monster dodged and resets its dodging state to false
                             else
                             {
                                 Console.WriteLine("the monster doged your attack");
@@ -174,6 +180,7 @@ namespace DungeonExplorer
                             }
                             validFightAction = true;
                         }
+                        // sets the players dodge state
                         else if (fightAction == "dodge")
                         {
                             Console.WriteLine("you get ready to doge an attack");
@@ -190,7 +197,7 @@ namespace DungeonExplorer
 
 
 
-                    // monster attack and chance to run away
+                    // random select if the monster dodges or attacks and checks if the monseter health is below 30 and gives 1/5 chance for it to run
                     if (monsterHealth < 31)
                     {
                         int MrunChanse = rng.Next(5);
@@ -214,7 +221,7 @@ namespace DungeonExplorer
                     }
 
                 }
-                    
+                // handles output for if the monster dies or runs away
                 if (monsterFlea)
                 {
                     Console.WriteLine("the monster ran away");
@@ -253,8 +260,9 @@ namespace DungeonExplorer
                     if (action == ("east"))
                     {
                         Console.WriteLine("you move through the east door");
-                        // sets both variables to false to end game loop once you leave the room
+                        // sets room two to false to end game
                         roomTwo = false;
+                        playing = false;
                     }
                     else if (action == ("north"))
                     {
@@ -262,6 +270,7 @@ namespace DungeonExplorer
                     }
                     else if (action == ("south"))
                     {
+                        // sets room one to true and room two to false to loop back to the first room
                         Console.WriteLine("you go back through the south door");
                         roomTwo = false;
                         roomOne = true;
@@ -303,11 +312,13 @@ namespace DungeonExplorer
                     }
                     else if (action == ("potion"))
                     {
+                        // only allows use if the potion hasnt been used and has been picked up and removes it from the inventory
                         if ((itemCollected2) & (!potionUsed))
                         {
                             Console.WriteLine("you used the health potion and gained 25 health");
                             int healed = potion.getAmountHealed();
                             health = health + healed;
+                            Inventory.Remove(item2);
                         }
                         else
                         {
